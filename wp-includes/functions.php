@@ -7166,18 +7166,18 @@ function is_php_version_compatible( $required ) {
 	return empty( $required ) || version_compare( phpversion(), $required, '>=' );
 }
 
-// Creates Digital Skills Custom Post Type
-function best_practices_init() {
+// Creates Member Custom Post Type
+function member_init() {
   $args = array(
-    'label' => 'Best Practices',
+    'label' => 'Members',
     'public' => true,
     'show_in_rest' => true,
     'show_ui' => true,
     'capability_type' => 'post',
     'hierarchical' => false,
-    'rewrite' => array('slug' => 'best-practices'),
+    'rewrite' => array('slug' => 'member'),
     'query_var' => true,
-    'menu_icon' => 'dashicons-video-alt',
+    'menu_icon' => 'dashicons-groups',
     'supports' => array(
       'title',
       'editor',
@@ -7190,9 +7190,121 @@ function best_practices_init() {
       'author',
       'page-attributes',)
   );
-  register_post_type( 'best-practices', $args );
+  register_post_type( 'member', $args );
 }
-add_action( 'init', 'best_practices_init' );
+add_action( 'init', 'member_init' );
+
+// Creates Strategic Document Post Type
+function strategic_document_init() {
+  $args = array(
+    'label' => 'Strategic Documents',
+    'public' => true,
+    'show_in_rest' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'strategic-document'),
+    'query_var' => true,
+    'menu_icon' => 'dashicons-media-document',
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+  );
+  register_post_type( 'strategic-document', $args );
+}
+add_action( 'init', 'strategic_document_init' );
+
+// Creates EU Initiative Post Type
+function eu_initiative_init() {
+  $args = array(
+    'label' => 'EU Initiatives',
+    'public' => true,
+    'show_in_rest' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'eu-initiative'),
+    'query_var' => true,
+    'menu_icon' => 'dashicons-star-half',
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+  );
+  register_post_type( 'eu-initiative', $args );
+}
+add_action( 'init', 'eu_initiative_init' );
+
+// Creates Good Practice Custom Post Type
+function good_practice_init() {
+  $args = array(
+    'label' => 'Good Practices',
+    'public' => true,
+    'show_in_rest' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'good-practice'),
+    'query_var' => true,
+    'menu_icon' => 'dashicons-thumbs-up',
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+  );
+  register_post_type( 'good-practice', $args );
+}
+add_action( 'init', 'good_practice_init' );
+
+// Creates Digital Skills Resource Custom Post Type
+function ds_resource_init() {
+  $args = array(
+    'label' => 'Digital Skills Resource',
+    'public' => true,
+    'show_in_rest' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'ds-resource'),
+    'query_var' => true,
+    'menu_icon' => 'dashicons-portfolio',
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+  );
+  register_post_type( 'ds-resource', $args );
+}
+add_action( 'init', 'ds_resource_init' );
 
 // Creates Skill Assessment Tool Custom Post Type
 function skill_assessment_tool_init() {
@@ -7205,7 +7317,7 @@ function skill_assessment_tool_init() {
     'hierarchical' => false,
     'rewrite' => array('slug' => 'skill-assessment'),
     'query_var' => true,
-    'menu_icon' => 'dashicons-video-alt',
+    'menu_icon' => 'dashicons-admin-tools',
     'supports' => array(
       'title',
       'editor',
@@ -7233,7 +7345,7 @@ function training_offer_init() {
     'hierarchical' => false,
     'rewrite' => array('slug' => 'training-offer'),
     'query_var' => true,
-    'menu_icon' => 'dashicons-video-alt',
+    'menu_icon' => 'dashicons-welcome-learn-more',
     'supports' => array(
       'title',
       'editor',
@@ -7261,7 +7373,7 @@ function funding_opportunity_init() {
     'hierarchical' => false,
     'rewrite' => array('slug' => 'funding-opportunity'),
     'query_var' => true,
-    'menu_icon' => 'dashicons-video-alt',
+    'menu_icon' => 'dashicons-money',
     'supports' => array(
       'title',
       'editor',
@@ -7289,7 +7401,7 @@ function event_init() {
     'hierarchical' => false,
     'rewrite' => array('slug' => 'event'),
     'query_var' => true,
-    'menu_icon' => 'dashicons-video-alt',
+    'menu_icon' => 'dashicons-calendar-alt',
     'supports' => array(
       'title',
       'editor',
@@ -7305,3 +7417,31 @@ function event_init() {
   register_post_type( 'event', $args );
 }
 add_action( 'init', 'event_init' );
+
+// Creates Article (news) Custom Post Type
+function article_init() {
+  $args = array(
+    'label' => 'Articles (news)',
+    'public' => true,
+    'show_in_rest' => true,
+    'show_ui' => true,
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'rewrite' => array('slug' => 'article'),
+    'query_var' => true,
+    'menu_icon' => 'dashicons-format-aside',
+    'supports' => array(
+      'title',
+      'editor',
+      'excerpt',
+      'trackbacks',
+      'custom-fields',
+      'comments',
+      'revisions',
+      'thumbnail',
+      'author',
+      'page-attributes',)
+  );
+  register_post_type( 'article', $args );
+}
+add_action( 'init', 'article_init' );
