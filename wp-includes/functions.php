@@ -7445,3 +7445,90 @@ function article_init() {
   register_post_type( 'article', $args );
 }
 add_action( 'init', 'article_init' );
+
+/**
+ * Add custom taxonomies
+ *
+ * Additional custom taxonomies can be defined here
+ * http://codex.wordpress.org/Function_Reference/register_taxonomy
+ */
+function add_custom_taxonomies() {
+	// Add new "Language" taxonomy to Posts 
+	
+	register_taxonomy('language', 'training-offer', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Languages', 'taxonomy general name' ),
+      'singular_name' => _x( 'Language', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Languages' ),
+      'all_items' => __( 'All Languages' ),
+      'parent_item' => __( 'Parent Language' ),
+      'parent_item_colon' => __( 'Parent Language:' ),
+      'edit_item' => __( 'Edit Language' ),
+      'update_item' => __( 'Update Language' ),
+      'add_new_item' => __( 'Add New Language' ),
+      'new_item_name' => __( 'New Language Name' ),
+      'menu_name' => __( 'Languages' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'languages', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/languages/"
+      'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
+    ),
+	));
+	
+
+	register_taxonomy('member-category', 'member', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Member Categories', 'taxonomy general name' ),
+      'singular_name' => _x( 'Category', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Categories' ),
+      'all_items' => __( 'All Categories' ),
+      'parent_item' => __( 'Parent Category' ),
+      'parent_item_colon' => __( 'Parent Category:' ),
+      'edit_item' => __( 'Edit Category' ),
+      'update_item' => __( 'Update Category' ),
+      'add_new_item' => __( 'Add New Category' ),
+      'new_item_name' => __( 'New Category Name' ),
+      'menu_name' => __( 'Member Categories' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'member-categories', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/languages/"
+      'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
+    ),
+	));
+	
+	register_taxonomy('ds-resource-topics', 'ds-resource', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Resources Topics', 'taxonomy general name' ),
+      'singular_name' => _x( 'Topic', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Topics' ),
+      'all_items' => __( 'All Topics' ),
+      'parent_item' => __( 'Parent Topic' ),
+      'parent_item_colon' => __( 'Parent Topic:' ),
+      'edit_item' => __( 'Edit Topic' ),
+      'update_item' => __( 'Update Topic' ),
+      'add_new_item' => __( 'Add New Topic' ),
+      'new_item_name' => __( 'New Topic Name' ),
+      'menu_name' => __( 'Resource Topics' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'ds-resource-topics', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/languages/"
+      'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
+    ),
+  ));
+}
+add_action( 'init', 'add_custom_taxonomies', 0 );
