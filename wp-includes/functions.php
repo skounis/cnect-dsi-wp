@@ -7279,15 +7279,15 @@ function good_practice_init() {
 add_action( 'init', 'good_practice_init' );
 
 // Creates Digital Skills Resource Custom Post Type
-function ds_resource_init() {
+function training_resource_init() {
   $args = array(
-    'label' => 'Digital Skills Resource',
+    'label' => 'Training Resource',
     'public' => true,
     'show_in_rest' => true,
     'show_ui' => true,
     'capability_type' => 'post',
     'hierarchical' => false,
-    'rewrite' => array('slug' => 'ds-resource'),
+    'rewrite' => array('slug' => 'training-resource'),
     'query_var' => true,
     'menu_icon' => 'dashicons-portfolio',
     'supports' => array(
@@ -7302,9 +7302,9 @@ function ds_resource_init() {
       'author',
       'page-attributes',)
   );
-  register_post_type( 'ds-resource', $args );
+  register_post_type( 'training-resource', $args );
 }
-add_action( 'init', 'ds_resource_init' );
+add_action( 'init', 'training_resource_init' );
 
 // Creates Skill Assessment Tool Custom Post Type
 function skill_assessment_tool_init() {
@@ -7453,34 +7453,7 @@ add_action( 'init', 'article_init' );
  * http://codex.wordpress.org/Function_Reference/register_taxonomy
  */
 function add_custom_taxonomies() {
-	// Add new "Language" taxonomy to Posts 
 	
-	register_taxonomy('language', 'training-offer', array(
-    // Hierarchical taxonomy (like categories)
-    'hierarchical' => true,
-    // This array of options controls the labels displayed in the WordPress Admin UI
-    'labels' => array(
-      'name' => _x( 'Languages', 'taxonomy general name' ),
-      'singular_name' => _x( 'Language', 'taxonomy singular name' ),
-      'search_items' =>  __( 'Search Languages' ),
-      'all_items' => __( 'All Languages' ),
-      'parent_item' => __( 'Parent Language' ),
-      'parent_item_colon' => __( 'Parent Language:' ),
-      'edit_item' => __( 'Edit Language' ),
-      'update_item' => __( 'Update Language' ),
-      'add_new_item' => __( 'Add New Language' ),
-      'new_item_name' => __( 'New Language Name' ),
-      'menu_name' => __( 'Languages' ),
-    ),
-    // Control the slugs used for this taxonomy
-    'rewrite' => array(
-      'slug' => 'languages', // This controls the base slug that will display before each term
-      'with_front' => false, // Don't display the category base before "/languages/"
-      'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
-    ),
-	));
-	
-
 	register_taxonomy('member-category', 'member', array(
     // Hierarchical taxonomy (like categories)
     'hierarchical' => true,
@@ -7506,15 +7479,15 @@ function add_custom_taxonomies() {
     ),
 	));
 	
-	register_taxonomy('ds-resource-topics', 'ds-resource', array(
+	register_taxonomy('resource-topics', 'post', array(
     // Hierarchical taxonomy (like categories)
     'hierarchical' => true,
     // This array of options controls the labels displayed in the WordPress Admin UI
     'labels' => array(
-      'name' => _x( 'Resources Topics', 'taxonomy general name' ),
-      'singular_name' => _x( 'Topic', 'taxonomy singular name' ),
+      'name' => _x( 'Resource Topics', 'taxonomy general name' ),
+      'singular_name' => _x( 'Resource Topic', 'taxonomy singular name' ),
       'search_items' =>  __( 'Search Topics' ),
-      'all_items' => __( 'All Topics' ),
+      'all_items' => __( 'All Resource Topics' ),
       'parent_item' => __( 'Parent Topic' ),
       'parent_item_colon' => __( 'Parent Topic:' ),
       'edit_item' => __( 'Edit Topic' ),
@@ -7525,7 +7498,32 @@ function add_custom_taxonomies() {
     ),
     // Control the slugs used for this taxonomy
     'rewrite' => array(
-      'slug' => 'ds-resource-topics', // This controls the base slug that will display before each term
+      'slug' => 'resource-topics', // This controls the base slug that will display before each term
+      'with_front' => false, // Don't display the category base before "/languages/"
+      'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
+    ),
+	));
+	
+	register_taxonomy('targetlanguages', 'post', array(
+    // Hierarchical taxonomy (like categories)
+    'hierarchical' => true,
+    // This array of options controls the labels displayed in the WordPress Admin UI
+    'labels' => array(
+      'name' => _x( 'Target Languages', 'taxonomy general name' ),
+      'singular_name' => _x( 'Language', 'taxonomy singular name' ),
+      'search_items' =>  __( 'Search Languages' ),
+      'all_items' => __( 'All Languages' ),
+      'parent_item' => __( 'Parent Language' ),
+      'parent_item_colon' => __( 'Parent Language:' ),
+      'edit_item' => __( 'Edit Language' ),
+      'update_item' => __( 'Update Language' ),
+      'add_new_item' => __( 'Add New Language' ),
+      'new_item_name' => __( 'New Language Name' ),
+      'menu_name' => __( 'Target Languages' ),
+    ),
+    // Control the slugs used for this taxonomy
+    'rewrite' => array(
+      'slug' => 'target-languages', // This controls the base slug that will display before each term
       'with_front' => false, // Don't display the category base before "/languages/"
       'hierarchical' => false // This will allow NOT URL's like "/languages/boston/cambridge/"
     ),
